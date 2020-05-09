@@ -16,7 +16,7 @@ def homePage(request):
 #     return render(request, 'home.html', {'data':data})
 
 def external(request):
-    out=run([sys.executable,'C:\\Users\\mgemra\\GettinJobProjects\\mysite\\polls\\main.py'], shell=False, stdout = PIPE)
+    out=run([sys.executable,'C:\\Users\\Pawel\\Desktop\\BOT-Project\\PythonScripts\\main.py'], shell=False, stdout = PIPE)
     return render(request, 'home.html', {'data':out})
 
 def index(request):

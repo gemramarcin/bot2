@@ -5,8 +5,8 @@ from scapy.all import *
 # wymagany docelowy adres IP i adres IP gatewaya
 from scapy.layers.l2 import Ether, ARP
 
-targetip = '192.168.0.213'  # wpisz jakiś swój ip adres, który istnieje
-gatewayip = ' 192.168.0.1'
+targetip = '192.168.1.163'  # wpisz jakiś swój ip adres, który istnieje
+gatewayip = '192.168.1.1'
 
 
 def getMACAddress(targetip):

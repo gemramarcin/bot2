@@ -1,6 +1,9 @@
 from subprocess import call
 import sys
 import os
+import ddos as dd
+import skanowanie as sk
+import spoofing as sp
 
 choice=int(sys.argv[1]) # wywołanie <nazwa skryptu> numer opcji
 number_of_arguments=len(sys.argv)-2 # 1 element to nazwa skryptu
@@ -11,11 +14,11 @@ arguments=[]
 # każdy indeks argumentów będzie miał jakąś funkcję( np. 1 argument to będzie wybór scenariusza, nastepny to np protokoły, następny ttl itd..
 
 if choice==1:
-    call(["python", "skanowanie.py"])
+    print(sk.main_function()) # print() jeżeli chcesz rezultat funkcji
 elif choice == 2:
-    call(["python","ddos.py"])
+    dd.main_function()
 elif choice ==3:
-    call(["python","spoofing.py"])
+    sp.main_function()
 elif choice == 4:
     pass # tutaj bedzie 4 skrpy
 else:
