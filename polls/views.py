@@ -1,8 +1,12 @@
 from django.http import HttpResponse
+from django.http import HttpRequest
 from django.shortcuts import render
 import requests
 import sys
 from subprocess import run, PIPE
+from PythonScripts import main
+from polls import forms
+
 
 
 def homePage(request):
@@ -16,7 +20,8 @@ def homePage(request):
 #     return render(request, 'home.html', {'data':data})
 
 def external(request):
-    out=run([sys.executable,'C:\\Users\\Pawel\\Desktop\\BOT-Project\\PythonScripts\\main.py'], shell=False, stdout = PIPE)
+    #ut=run([sys.executable,'C:\\Users\\Pawel\\Desktop\\BOT-Project\\PythonScripts\\main.py'], shell=False, stdout = PIPE)
+    out = main.choose(3)
     return render(request, 'home.html', {'data':out})
 
 def index(request):
@@ -32,4 +37,15 @@ def help(request):
 
     
 def scenario(request):
-    return render(request, 'scenario.html')
+        # if this is a POST request we need to process the form data
+
+    out = "result:"
+    if request.method == 'POST':
+        inp_value = request.POST.get('scen', 'This is a default value')
+        print(inp_value)
+        out = main.choose(inp_value)
+        
+     
+
+    return render(request, 'scenario.html', {'data':out})
+    #return render(request, 'scenario.html')
