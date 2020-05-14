@@ -4,31 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+     {% load static %}
+    <link rel="shortcut icon" href="{%  static 'favicon.ico' %}">
 </head>
 <body>
 
     <form action="scenario" method="post">
         {% csrf_token %}
-        <select name="scen" id="packet-select">
+        <select name="scen" id="scenario-select">
             <option value="0">--Please choose an option--</option>
             <option value="1">Skanowanie</option>
             <option value="2">DDOS</option>
             <option value="3">Spoofing</option>
             <option value="4">XXX</option>
         </select>
+        <div class="container"></div>
         <input type="submit" value="OK">
         
     </form>
 
-    {% comment %} <h1>Welcome</h1>
-    <button onclick="location.href='{% url 'script' %}'">Execute Script</button> {% endcomment %}
+    
+
     <div>
     {% if data %}
     {{data}}
     {% endif %}
     </div>
 
-
   <a href="./index">Back</a>
+
+
+ <script src="{% static './scenario.js' %}"></script>
 </body>
 </html>

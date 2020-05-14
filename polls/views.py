@@ -42,8 +42,11 @@ def scenario(request):
     out = "result:"
     if request.method == 'POST':
         inp_value = request.POST.get('scen', 'This is a default value')
+        inp_targetIp = request.POST.get('targetIp')
+        inp_gatewayIp = request.POST.get('gatewayIp', '0.0.0.0')
         print(inp_value)
-        out = main.choose(inp_value)
+        print(inp_targetIp)
+        out = main.choose(inp_value, inp_targetIp, inp_gatewayIp)
         
      
 

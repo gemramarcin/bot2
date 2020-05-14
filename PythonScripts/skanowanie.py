@@ -15,7 +15,7 @@ def is_up(ip):  # sprawdzanie czy host jest up za pomocą pinga (ICMP)
         return True
 
 # SKANOWANIE PÓŁOTWARTE
-def main_function():
+def main_function(targetIp):
     # ports = range(1, 3000)  # porty które chcemy przeskanować
     # conf.verb=0 # wyłączenie verbose żeby nie wyświetlało zbednych rzeczy
     # if is_up(targetip):
@@ -38,4 +38,4 @@ def main_function():
 
     # print('Scanning done...')
     # return 'Opened ports: ', open_ports
-    return "scanning finished"
+    return "scanning finished; target ip: "+ targetIp

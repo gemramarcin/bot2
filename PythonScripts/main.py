@@ -18,14 +18,15 @@ from PythonScripts import spoofing as sp
 # każdy indeks argumentów będzie miał jakąś funkcję( np. 1 argument to będzie wybór scenariusza, nastepny to np protokoły, następny ttl itd..
 
 
-def choose(choice):
+def choose(choice, targetIP, gatewayIP = "0.0.0.0"):
 
-    if choice== "1":
-        out = sk.main_function() # print() jeżeli chcesz rezultat funkcji
+
+    if choice == "1":
+        out = sk.main_function(targetIP) # print() jeżeli chcesz rezultat funkcji
     elif choice == "2":
-        out = dd.main_function()
+        out = dd.main_function(targetIP)
     elif choice == "3":
-        out = sp.main_function()
+        out = sp.main_function(targetIP, gatewayIP)
     elif choice == "4":
         pass # tutaj bedzie 4 skrpy
     else:
