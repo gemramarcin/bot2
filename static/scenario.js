@@ -17,6 +17,18 @@ function createInputIP() {
     container.appendChild(input);
 }
 
+function createPort(){
+    var input = document.createElement("input");
+    input.id = "port"
+    input.type = "text";
+    input.name = "port";
+    var label = document.createElement("label");
+    label.innerHTML = "port: "
+    label.setAttribute("for", "port");
+    container.appendChild(label);
+    container.appendChild(input);
+}
+
 function createGatewayIp(){
     var input = document.createElement("input");
     input.id = "gatewayIp"
@@ -25,6 +37,28 @@ function createGatewayIp(){
     var label = document.createElement("label");
     label.innerHTML = "Gateway IP: "
     label.setAttribute("for", "gatewayIp");
+    container.appendChild(label);
+    container.appendChild(input);
+}
+
+function createPortRange(){
+    var input = document.createElement("input");
+    input.id = "minPortRange"
+    input.type = "text";
+    input.name = "minPortRange";
+    var label = document.createElement("label");
+    label.innerHTML = "minPortRange: "
+    label.setAttribute("for", "minPortRange");
+    container.appendChild(label);
+    container.appendChild(input);
+
+    var input = document.createElement("input");
+    input.id = "maxPortRange"
+    input.type = "text";
+    input.name = "maxPortRange";
+    var label = document.createElement("label");
+    label.innerHTML = "maxPortRange: "
+    label.setAttribute("for", "maxPortRange");
     container.appendChild(label);
     container.appendChild(input);
 }
@@ -40,8 +74,13 @@ function changeInput() {
     var value = e.options[e.selectedIndex].value
     console.log(value)
 
-    if (value == "1" || value == "2") {
+    if (value == "1") {
         createInputIP();
+        createPortRange();
+    }
+    else if (value == "2"){
+        createInputIP();
+        createPort();
     }
     else if (value == "3"){
         createInputIP();

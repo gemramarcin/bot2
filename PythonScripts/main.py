@@ -18,13 +18,13 @@ from PythonScripts import spoofing as sp
 # każdy indeks argumentów będzie miał jakąś funkcję( np. 1 argument to będzie wybór scenariusza, nastepny to np protokoły, następny ttl itd..
 
 
-def choose(choice, targetIP, gatewayIP = "0.0.0.0"):
+def choose(choice, targetIP, gatewayIP, port, portRange):
 
 
     if choice == "1":
-        out = sk.main_function(targetIP) # print() jeżeli chcesz rezultat funkcji
+        out = sk.main_function(targetIP, portRange)
     elif choice == "2":
-        out = dd.main_function(targetIP)
+        out = dd.main_function(targetIP, port)
     elif choice == "3":
         out = sp.main_function(targetIP, gatewayIP)
     elif choice == "4":
