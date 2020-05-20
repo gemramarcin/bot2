@@ -39,3 +39,4 @@ def main_function(targetip, portRange):
 
     print('Scanning done...')
     return 'Opened ports: ', open_ports
+    # return 'jakiescosconiewiemczymjestalewyswietlasiewiectakbedetestowal'

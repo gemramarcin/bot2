@@ -32,3 +32,4 @@ def main_function(targetip, gatewayip):
     except KeyboardInterrupt:
         print('Stop spoofing')
     return 'Spoofing done-> \nTarget MAC: ', targetMAC, ' \n Gateway MAC: ', gatewayMAC
+    # return 'jakiescosconiewiemczymjestalewyswietlasiewiectakbedetestowal'

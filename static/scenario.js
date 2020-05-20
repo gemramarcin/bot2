@@ -13,8 +13,13 @@ function createInputIP() {
     var label = document.createElement("label");
     label.innerHTML = "Target IP: "
     label.setAttribute("for", "tagetIp");
-    container.appendChild(label);
-    container.appendChild(input);
+
+    var div = document.createElement("div");
+    div.classList.add("container__item");
+    div.appendChild(label);
+    div.appendChild(input);
+
+    container.appendChild(div);
 }
 
 function createPort(){
@@ -25,8 +30,16 @@ function createPort(){
     var label = document.createElement("label");
     label.innerHTML = "port: "
     label.setAttribute("for", "port");
-    container.appendChild(label);
-    container.appendChild(input);
+    // container.appendChild(label);
+    // container.appendChild(input);
+
+    var div = document.createElement("div");
+    div.classList.add("container__item");
+    div.appendChild(label);
+    div.appendChild(input);
+
+    container.appendChild(div);
+    
 }
 
 function createGatewayIp(){
@@ -37,20 +50,23 @@ function createGatewayIp(){
     var label = document.createElement("label");
     label.innerHTML = "Gateway IP: "
     label.setAttribute("for", "gatewayIp");
-    container.appendChild(label);
-    container.appendChild(input);
+    // container.appendChild(label);
+    // container.appendChild(input);
+
+    var div = document.createElement("div");
+    div.classList.add("container__item");
+    div.appendChild(label);
+    div.appendChild(input);
+
+    container.appendChild(div);
 }
 
-function createPortRange(){
-    var input = document.createElement("input");
-    input.id = "minPortRange"
-    input.type = "text";
-    input.name = "minPortRange";
-    var label = document.createElement("label");
-    label.innerHTML = "minPortRange: "
-    label.setAttribute("for", "minPortRange");
-    container.appendChild(label);
-    container.appendChild(input);
+
+function createMaxPortRange(){
+
+    var div = document.createElement("div");
+    div.classList.add("container__item");
+
 
     var input = document.createElement("input");
     input.id = "maxPortRange"
@@ -59,8 +75,32 @@ function createPortRange(){
     var label = document.createElement("label");
     label.innerHTML = "maxPortRange: "
     label.setAttribute("for", "maxPortRange");
-    container.appendChild(label);
-    container.appendChild(input);
+
+    div.appendChild(label);
+    div.appendChild(input);
+
+    container.appendChild(div);
+}
+
+function createMinPortRange(){
+
+    var div = document.createElement("div");
+    div.classList.add("container__item");
+
+
+    var input = document.createElement("input");
+    input.id = "minPortRange"
+    input.type = "text";
+    input.name = "minPortRange";
+    var label = document.createElement("label");
+    label.innerHTML = "minPortRange: "
+    label.setAttribute("for", "minPortRange");
+
+    div.appendChild(label);
+    div.appendChild(input);
+
+    container.appendChild(div);
+
 }
 
 function changeInput() {
@@ -76,7 +116,8 @@ function changeInput() {
 
     if (value == "1") {
         createInputIP();
-        createPortRange();
+        createMinPortRange();
+        createMaxPortRange();
     }
     else if (value == "2"){
         createInputIP();

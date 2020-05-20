@@ -1,14 +1,15 @@
 from subprocess import call
 import sys
 import os
-import ddos as dd
-import skanowanie as sk
-import spoofing as sp
-# from PythonScripts import ddos as dd
-# from PythonScripts import skanowanie as sk
-# from PythonScripts import spoofing as sp
-# from PythonScripts import fuzzing as fuz
-import fuzzing as fuz
+# import ddos as dd
+# import skanowanie as sk
+# import spoofing as sp
+# import fuzzing as fuz
+from PythonScripts import ddos as dd
+from PythonScripts import skanowanie as sk
+from PythonScripts import spoofing as sp
+from PythonScripts import fuzzing as fuz
+
 #choice=int(sys.argv[1]) # wywołanie <nazwa skryptu> numer opcji
 # number_of_arguments=len(sys.argv) # 1 element to nazwa skryptu
 # # .. tutaj będą wczytywane różne opcje pakietu
@@ -21,8 +22,8 @@ gatewayIP='192.168.1.1'
 
 # fuz.main_function(targetIP,1000)
 #dd.main_function(targetIP,80)
-r=[78,81]
-print(sk.main_function(targetIP,r))
+# r=[78,81]
+# print(sk.main_function(targetIP,r))
 #print(sp.main_function(targetIP,gatewayIP))
 #out = dd.main_function(targetIP, 21)
 def choose(choice, targetIP, gatewayIP, port, portRange):

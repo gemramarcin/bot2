@@ -5,11 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
      {% load static %}
-    <link rel="shortcut icon" href="{%  static 'favicon.ico' %}">
+
+     <link rel="stylesheet" type="text/css" href="{% static 'scenario.css' %}">
 </head>
 <body>
 
-    <form action="scenario" method="post">
+    <main class="main">
+
+    <form action="scenario" method="post" class="form">
         {% csrf_token %}
         <select name="scen" id="scenario-select">
             <option value="0">--Please choose an option--</option>
@@ -19,19 +22,24 @@
             <option value="4">XXX</option>
         </select>
         <div class="container"></div>
-        <input type="submit" value="OK">
+        <input type="submit" value="OK" class="button">
         
     </form>
 
     
 
-    <div>
+    <div class="container">
     {% if data %}
     {{data}}
     {% endif %}
     </div>
 
-  <a href="./index">Back</a>
+    </main>
+
+    <footer class="footer">
+        <a href="./" class="link">Back</a>
+    </footer>
+
 
 
  <script src="{% static './scenario.js' %}"></script>

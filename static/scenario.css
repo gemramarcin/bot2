@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+body{
+    font-family: 'Poppins', sans-serif;
+    background: #2D1E2F;
+    color: #CDD6DD;
+    font-size: 18px;
+}
+
+.button{
+    margin-top: 40px;
+    width: 80px;
+    height: 30px;
+    border-radius: 10px;
+    border: 0;
+    background: #3C91E6;
+    color: #CDD6DD;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    opacity: 0.9;
+}
+
+.container{
+    display: flex;
+    flex-flow: column;
+    align-items: flex-start;
+    margin-top: 30px;
+    width: 70%;
+}
+
+.container__item{
+    display: flex;
+    flex-direction: column;
+    margin-top: 40px;
+}
+
+.form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+
+}
+
+input{
+    background: #AF9AB2;
+    border-radius: 5px;
+    height: 1.5em;
+    margin-top: 10px;
+}
+
+.main{
+    margin: 120px auto;
+    width: 30%;
+    position: relative;
+    min-height: 50vh;
+}
+
+.link{
+    display: block;
+    text-decoration: none;
+    width: 80px;
+    height: 30px;
+    border: 0;
+    background: #3C91E6;
+    color: #CDD6DD;
+    text-align: center;
+    position: fixed;
+    top: 10px;
+    opacity: 0.5;
+}
+
+#scenario-select{
+    font-family: 'Poppins', sans-serif;
+    font-size: 16px;
+}

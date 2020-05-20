@@ -10,7 +10,7 @@ from polls import forms
 
 
 def homePage(request):
-    return render(request, 'home.html')
+    return render(request, 'index.html')
 
 # def output(request):
 

