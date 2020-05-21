@@ -16,10 +16,10 @@
         {% csrf_token %}
         <select name="scen" id="scenario-select">
             <option value="0">--Please choose an option--</option>
-            <option value="1">Skanowanie</option>
+            <option value="1">Scan</option>
             <option value="2">DDOS</option>
             <option value="3">Spoofing</option>
-            <option value="4">XXX</option>
+            <option value="4">Fuzzing</option>
         </select>
         <div class="container"></div>
         <input type="submit" value="OK" class="button">
@@ -29,6 +29,9 @@
     
 
     <div class="container">
+    </div>
+
+    <div class="data">
     {% if data %}
     {{data}}
     {% endif %}

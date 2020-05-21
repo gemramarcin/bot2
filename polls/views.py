@@ -42,15 +42,16 @@ def scenario(request):
     out = "result:"
     if request.method == 'POST':
         inp_value = request.POST.get('scen', 'This is a default value')
-        inp_targetIp = request.POST.get('targetIp')
+        inp_targetIp = request.POST.get('targetIp', '0')
         inp_gatewayIp = request.POST.get('gatewayIp', '0.0.0.0')
         inp_port = request.POST.get('port', '0')
+        inp_numberOfPackets = request.POST.get('number Of Packets', '0')
         inp_portRange = []
         inp_portRange.append(request.POST.get('minPortRange', '0')) 
         inp_portRange.append(request.POST.get('maxPortRange', '3000')) 
 
    
-        out = main.choose(inp_value, inp_targetIp, inp_gatewayIp, inp_port, inp_portRange)
+        out = main.choose(inp_value, inp_targetIp, inp_gatewayIp, inp_port, inp_portRange, inp_numberOfPackets)
         
      
 

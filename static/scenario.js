@@ -5,53 +5,14 @@ var container = document.querySelector(".container");
 var e = document.getElementById("scenario-select");
 console.log(e)
 
-function createInputIP() {
+function createSingleInput(name) {
     var input = document.createElement("input");
-    input.id = "targetIp"
+    input.id = name;
     input.type = "text";
-    input.name = "targetIp";
+    input.name = name;
     var label = document.createElement("label");
-    label.innerHTML = "Target IP: "
-    label.setAttribute("for", "tagetIp");
-
-    var div = document.createElement("div");
-    div.classList.add("container__item");
-    div.appendChild(label);
-    div.appendChild(input);
-
-    container.appendChild(div);
-}
-
-function createPort(){
-    var input = document.createElement("input");
-    input.id = "port"
-    input.type = "text";
-    input.name = "port";
-    var label = document.createElement("label");
-    label.innerHTML = "port: "
-    label.setAttribute("for", "port");
-    // container.appendChild(label);
-    // container.appendChild(input);
-
-    var div = document.createElement("div");
-    div.classList.add("container__item");
-    div.appendChild(label);
-    div.appendChild(input);
-
-    container.appendChild(div);
-    
-}
-
-function createGatewayIp(){
-    var input = document.createElement("input");
-    input.id = "gatewayIp"
-    input.type = "text";
-    input.name = "gatewayIp";
-    var label = document.createElement("label");
-    label.innerHTML = "Gateway IP: "
-    label.setAttribute("for", "gatewayIp");
-    // container.appendChild(label);
-    // container.appendChild(input);
+    label.innerHTML = name + ": ";
+    label.setAttribute("for", "name");
 
     var div = document.createElement("div");
     div.classList.add("container__item");
@@ -62,46 +23,6 @@ function createGatewayIp(){
 }
 
 
-function createMaxPortRange(){
-
-    var div = document.createElement("div");
-    div.classList.add("container__item");
-
-
-    var input = document.createElement("input");
-    input.id = "maxPortRange"
-    input.type = "text";
-    input.name = "maxPortRange";
-    var label = document.createElement("label");
-    label.innerHTML = "maxPortRange: "
-    label.setAttribute("for", "maxPortRange");
-
-    div.appendChild(label);
-    div.appendChild(input);
-
-    container.appendChild(div);
-}
-
-function createMinPortRange(){
-
-    var div = document.createElement("div");
-    div.classList.add("container__item");
-
-
-    var input = document.createElement("input");
-    input.id = "minPortRange"
-    input.type = "text";
-    input.name = "minPortRange";
-    var label = document.createElement("label");
-    label.innerHTML = "minPortRange: "
-    label.setAttribute("for", "minPortRange");
-
-    div.appendChild(label);
-    div.appendChild(input);
-
-    container.appendChild(div);
-
-}
 
 function changeInput() {
 
@@ -111,22 +32,34 @@ function changeInput() {
 
 
 
+
     var value = e.options[e.selectedIndex].value
     console.log(value)
 
     if (value == "1") {
-        createInputIP();
-        createMinPortRange();
-        createMaxPortRange();
+
+        createSingleInput("targetIP");
+        createSingleInput("minPortRange");
+        createSingleInput("maxPortRange");
     }
     else if (value == "2"){
-        createInputIP();
-        createPort();
+        createSingleInput("targetIP");
+        createSingleInput("port")
     }
     else if (value == "3"){
-        createInputIP();
-        createGatewayIp();
+        createSingleInput("targetIP");
+        createSingleInput("gatewayIp");
     }
+
+    else if (value == "4"){
+        createSingleInput("targetIP");
+        createSingleInput("number Of Packets");
+    }
+
+    let data = document.querySelector(".data");
+    data.innerHTML = "result: "
+
+
 
 
 }

@@ -11,3 +11,4 @@ def main_function(targetip,numberOfPackets):
          send(fuzz(IP(dst=targetip)))
     # return packets
     # send(IP(dst=targetip) / fuzz(UDP() / NTP(version=4)))
+    # return targetip + " " + numberOfPackets

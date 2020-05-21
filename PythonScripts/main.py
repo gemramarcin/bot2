@@ -26,7 +26,7 @@ gatewayIP='192.168.1.1'
 # print(sk.main_function(targetIP,r))
 #print(sp.main_function(targetIP,gatewayIP))
 #out = dd.main_function(targetIP, 21)
-def choose(choice, targetIP, gatewayIP, port, portRange):
+def choose(choice, targetIP, gatewayIP, port, portRange, numberOfPackets):
 
     if choice == "1":
         out = sk.main_function(targetIP, portRange)
@@ -35,7 +35,7 @@ def choose(choice, targetIP, gatewayIP, port, portRange):
     elif choice == "3":
         out = sp.main_function(targetIP, gatewayIP)
     elif choice == "4":
-        out=fuz.main_function(targetIP,10)
+        out=fuz.main_function(targetIP, numberOfPackets)
     else:
         out = "Zły wybór"
 

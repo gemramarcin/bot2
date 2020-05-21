@@ -2,7 +2,7 @@
 
 body{
     font-family: 'Poppins', sans-serif;
-    background: #2D1E2F;
+    background: #22577A; 
     color: #CDD6DD;
     font-size: 18px;
 }
@@ -43,7 +43,7 @@ body{
 }
 
 input{
-    background: #AF9AB2;
+    background: #B9D6F2;
     border-radius: 5px;
     height: 1.5em;
     margin-top: 10px;
@@ -67,7 +67,7 @@ input{
     text-align: center;
     position: fixed;
     top: 10px;
-    opacity: 0.5;
+    opacity: 0.8;
 }
 
 #scenario-select{
