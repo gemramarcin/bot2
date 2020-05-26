@@ -1,14 +1,13 @@
 from scapy.all import *
 from scapy.layers.inet import IP, ICMP, TCP
 
-targetip = '192.168.227.130'
 closed_ports = []
 open_ports = []
 
 
 def is_up(ip):  # sprawdzanie czy host jest up za pomocą pinga (ICMP)
     ping = IP(dst=ip) /ICMP()
-    response = sr(ping, timeout=3)
+    response = sr1(ping, timeout=3)
     if response == None:
         return False
     else:
@@ -37,6 +36,5 @@ def main_function(targetip, portRange):
                 elif response.getlayer(TCP).flags == 0x14:  # jeżeli odpowiedź to RST/ACK
                     closed_ports.append(port)
 
-    print('Scanning done...')
+    print(open_ports)
     return 'Opened ports: ', open_ports
-    # return 'jakiescosconiewiemczymjestalewyswietlasiewiectakbedetestowal'

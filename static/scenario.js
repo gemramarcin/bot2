@@ -38,21 +38,21 @@ function changeInput() {
 
     if (value == "1") {
 
-        createSingleInput("targetIP");
+        createSingleInput("targetIp");
         createSingleInput("minPortRange");
         createSingleInput("maxPortRange");
     }
     else if (value == "2"){
-        createSingleInput("targetIP");
+        createSingleInput("targetIp");
         createSingleInput("port")
     }
     else if (value == "3"){
-        createSingleInput("targetIP");
+        createSingleInput("targetIp");
         createSingleInput("gatewayIp");
     }
 
     else if (value == "4"){
-        createSingleInput("targetIP");
+        createSingleInput("targetIp");
         createSingleInput("number Of Packets");
     }
 

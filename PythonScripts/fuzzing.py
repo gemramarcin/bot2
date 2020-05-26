@@ -7,8 +7,6 @@ from scapy.layers.ntp import NTP
 
 def main_function(targetip,numberOfPackets):
     # packets=[]
-    for i in range(1,numberOfPackets):
-         send(fuzz(IP(dst=targetip)))
-    # return packets
-    # send(IP(dst=targetip) / fuzz(UDP() / NTP(version=4)))
-    # return targetip + " " + numberOfPackets
+    for i in range(1,int(numberOfPackets)):
+         sr1(IP(dst=targetip) / fuzz(UDP() / NTP(version=4)), timeout=0)
+    return 'Fuzzing done'
