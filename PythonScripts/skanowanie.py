@@ -13,7 +13,7 @@ def is_up(ip):  # sprawdzanie czy host jest up za pomocą pinga (ICMP)
     else:
         return True
 
-# SKANOWANIE PÓŁOTWARTE
+# TCP CONNECT
 def main_function(targetip, portRange):
     ports = range(int(portRange[0]), int(portRange[1]))  # porty które chcemy przeskanować
     conf.verb=0 # wyłączenie verbose żeby nie wyświetlało zbednych rzeczy
@@ -31,8 +31,8 @@ def main_function(targetip, portRange):
             elif response.haslayer(TCP):
                 if response.getlayer(TCP).flags == 0x12:  # jeżeli odpowiedzią jest SYN/ACK
                     open_ports.append(port)
-                    rst = IP(dst=targetip) / TCP(sport=source_port, dport=port, flags='AR')  # tworzenie pakietu RST
-                    sr(rst, timeout=3)
+                    rst = IP(dst=targetip) / TCP(sport=source_port, dport=port, flags=0x14)  # tworzenie pakietu RST/ACK
+                    sr1(rst, timeout=0)
                 elif response.getlayer(TCP).flags == 0x14:  # jeżeli odpowiedź to RST/ACK
                     closed_ports.append(port)
 

