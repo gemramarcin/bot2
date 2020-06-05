@@ -1,8 +1,6 @@
 from scapy.all import *
 from scapy.layers.inet import IP, ICMP, TCP
 
-closed_ports = []
-open_ports = []
 
 
 def is_up(ip):  # sprawdzanie czy host jest up za pomocą pinga (ICMP)
@@ -15,6 +13,8 @@ def is_up(ip):  # sprawdzanie czy host jest up za pomocą pinga (ICMP)
 
 # TCP CONNECT
 def main_function(targetip, portRange):
+    open_ports = []
+    closed_ports=[]
     ports = range(int(portRange[0]), int(portRange[1]))  # porty które chcemy przeskanować
     conf.verb=0 # wyłączenie verbose żeby nie wyświetlało zbednych rzeczy
     if is_up(targetip):
@@ -31,10 +31,11 @@ def main_function(targetip, portRange):
             elif response.haslayer(TCP):
                 if response.getlayer(TCP).flags == 0x12:  # jeżeli odpowiedzią jest SYN/ACK
                     open_ports.append(port)
-                    rst = IP(dst=targetip) / TCP(sport=source_port, dport=port, flags=0x14)  # tworzenie pakietu RST/ACK
+                    rst = IP(dst=targetip) / TCP(sport=source_port, dport=port, flags=0x4)  # tworzenie pakietu RST
                     sr1(rst, timeout=0)
                 elif response.getlayer(TCP).flags == 0x14:  # jeżeli odpowiedź to RST/ACK
                     closed_ports.append(port)
-
+    else:
+        return 'Host is not active'
     print(open_ports)
     return 'Opened ports: ', open_ports

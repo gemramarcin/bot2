@@ -1,8 +1,7 @@
 from scapy.all import *
 
 # skrypt spoofingu- wyłuskanie MAC adresu naszego targetu bez wpisywania naszego adresu w jego tablicę (przekłamanie)
-# wymagane protokoły: Ethernet i ARP reszta dowolnie
-# wymagany docelowy adres IP i adres IP gatewaya
+
 from scapy.layers.l2 import Ether, ARP
 
 
